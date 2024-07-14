@@ -5,10 +5,13 @@ public class User {
   private String user_name;
   private String user_email;
   private String user_password;
+  private Status user_status = Status.CLIENT;
+
   public int getUser_id() {
     return user_id;
   }
   public User(String user_name, String user_email, String user_password) {
+    System.out.println("in constructor 1");
     this.user_name = user_name;
     this.user_email = user_email;
     this.user_password = user_password;
@@ -16,9 +19,11 @@ public class User {
   }
   
   public User() {
+    System.out.println("in constructor 2");
   }
   
   public User(int user_id, String user_name, String user_email, String user_password, Status user_status) {
+    System.out.println("in constructor 3");
     this.user_id = user_id;
     this.user_name = user_name;
     this.user_email = user_email;
@@ -52,7 +57,6 @@ public class User {
   public void setUser_status(Status user_status) {
     this.user_status = user_status;
   }
-  private Status user_status;
 
     @Override
     public String toString() {

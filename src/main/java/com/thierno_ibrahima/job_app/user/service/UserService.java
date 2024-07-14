@@ -1,5 +1,7 @@
 package com.thierno_ibrahima.job_app.user.service;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 import com.thierno_ibrahima.job_app.user.model.User;
@@ -19,6 +21,12 @@ public class UserService {
   public boolean addUser(User user) {
       return userRepository.addUser(user);
   }
+
+  public Optional<User> login(String user_email, String user_password) {
+    return userRepository.login(user_email, user_password);
+  }
+
+
   
 
 

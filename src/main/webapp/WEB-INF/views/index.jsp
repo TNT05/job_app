@@ -84,6 +84,7 @@
     <div class="container">
         <div class="header">
             <h1>Welcome to Job Listing App</h1>
+            <h2>${error}</h2>
         </div>
         <div class="buttons">
             <button onclick="toggleForm('loginForm')">Login</button>
@@ -91,23 +92,23 @@
         </div>
         <div id="loginForm" class="form-container">
             <h2>Login</h2>
-            <form action="login" method="post">
-                <label for="loginEmail">Email:</label>
-                <input type="email" id="loginEmail" name="email" required>
-                <label for="loginPassword">Password:</label>
-                <input type="password" id="loginPassword" name="password" required>
+            <form action="loginUser" method="get">
+                <label for="user_email">Email:</label>
+                <input type="email" id="login_user_email" name="user_email" required>
+                <label for="user_password">Password:</label>
+                <input type="password" id="login_user_password" name="user_password" required>
                 <button type="submit">Login</button>
             </form>
         </div>
         <div id="signInForm" class="form-container">
             <h2>Sign In</h2>
-            <form action="signin" method="post">
-                <label for="signInName">Username:</label>
-                <input type="text" id="signInName" name="username" required>
-                <label for="signInEmail">Email:</label>
-                <input type="email" id="signInEmail" name="email" required>
-                <label for="signInPassword">Password:</label>
-                <input type="password" id="signInPassword" name="password" required>
+            <form action="signInUser" method="post">
+                <label for="user_name">Username:</label>
+                <input type="text" id="signIn_user_name" name="user_name" required>
+                <label for="user_email">Email:</label>
+                <input type="email" id="signIn_user_email" name="user_email" required>
+                <label for="user_password">Password:</label>
+                <input type="password" id="signIn_user_password" name="user_password" required>
                 <button type="submit">Sign In</button>
             </form>
         </div>
