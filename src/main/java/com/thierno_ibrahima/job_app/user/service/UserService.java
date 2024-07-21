@@ -1,8 +1,8 @@
 package com.thierno_ibrahima.job_app.user.service;
 
-import java.util.Optional;
-
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 
 import com.thierno_ibrahima.job_app.user.model.User;
 import com.thierno_ibrahima.job_app.user.repository.UserRepository;
@@ -18,12 +18,12 @@ public class UserService {
     this.userRepository = userRepository;
   }
 
-  public boolean addUser(User user) {
+  public User addUser(User user) {
       return userRepository.addUser(user);
   }
 
-  public Optional<User> login(String user_email, String user_password) {
-    return userRepository.login(user_email, user_password);
+  public User login(String user_email, String user_password) {
+    return userRepository.login(user_email, user_password).orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND));
   }
 
 

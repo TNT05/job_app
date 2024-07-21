@@ -1,7 +1,7 @@
 package com.thierno_ibrahima.job_app;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.Objects;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,8 +37,8 @@ public class MainController {
 
   @PostMapping("/signInUser")
   public String signUpUser(@ModelAttribute User user, RedirectAttributes redirectAttributes) {
-      boolean signUpResult = userService.addUser(user);
-      if(signUpResult){
+      User signUpResult = userService.addUser(user);
+      if(Objects.nonNull(signUpResult)){
         redirectAttributes.addFlashAttribute("user", user);
         return "redirect:/home"; // Redirect to the /home endpoint
       }
@@ -48,18 +48,18 @@ public class MainController {
       }
   }
 
-  @GetMapping("/loginUser")
-  public String loginUser(String user_email, String user_password, RedirectAttributes redirectAttributes) {
-    Optional<User> loginUserResult = userService.login(user_email, user_password);
-    if(loginUserResult.isPresent()){
-      redirectAttributes.addFlashAttribute("user", loginUserResult.get());
-      return "redirect:/home"; // Redirect to the /home endpoint
-    }
-    else{
-      redirectAttributes.addFlashAttribute("error", "There was an error during login");
-      return "redirect:/index";
-    }
-  }
+  // @GetMapping("/loginUser")
+  // public String loginUser(String user_email, String user_password, RedirectAttributes redirectAttributes) {
+  //   User loginUserResult = userService.login(user_email, user_password);
+  //   if(loginUserResult.isPresent()){
+  //     redirectAttributes.addFlashAttribute("user", loginUserResult.get());
+  //     return "redirect:/home"; // Redirect to the /home endpoint
+  //   }
+  //   else{
+  //     redirectAttributes.addFlashAttribute("error", "There was an error during login");
+  //     return "redirect:/index";
+  //   }
+  // }
 
   @GetMapping("/home")
   public String home(Model model, @ModelAttribute("user") User user) {

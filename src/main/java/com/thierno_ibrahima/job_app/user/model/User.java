@@ -7,6 +7,11 @@ public class User {
   private String user_password;
   private Status user_status = Status.CLIENT;
 
+    public User(String user_email, String user_password) {
+        this.user_email = user_email;
+        this.user_password = user_password;
+    }
+
   public int getUser_id() {
     return user_id;
   }

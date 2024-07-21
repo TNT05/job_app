@@ -25,9 +25,10 @@ public class UserRepository {
     return new User(rs.getInt("user_id"), rs.getString("user_name"), rs.getString("user_email"), rs.getString("user_password"), Status.valueOf(rs.getString("user_status")));
   }
 
-  public boolean addUser(User user){
+  public User addUser(User user){
     String sql = "INSERT INTO Users (user_name, user_email, user_password, user_status) VALUES (?,?,?,?)";
-    return jdbcTemplate.update(sql, user.getUser_name(), user.getUser_email(), user.getUser_password(), user.getUser_status().name()) > 0;
+    jdbcTemplate.update(sql, user.getUser_name(), user.getUser_email(), user.getUser_password(), user.getUser_status().name());
+    return user;
   }
 
   public Optional<User> login(String user_email, String user_password) {
